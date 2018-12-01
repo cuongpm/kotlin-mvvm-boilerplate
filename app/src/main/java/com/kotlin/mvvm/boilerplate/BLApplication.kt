@@ -11,9 +11,9 @@ import dagger.android.DaggerApplication
  * Created by cuongpm on 11/29/18.
  */
 
-open class App : DaggerApplication() {
+open class BLApplication : DaggerApplication() {
 
-    lateinit var androidInjector: AndroidInjector<out DaggerApplication>
+    private lateinit var androidInjector: AndroidInjector<out DaggerApplication>
 
     override fun onCreate() {
         super.onCreate()

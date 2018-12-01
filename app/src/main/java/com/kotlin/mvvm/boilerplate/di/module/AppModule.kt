@@ -1,7 +1,7 @@
 package com.kotlin.mvvm.boilerplate.di.module
 
 import android.content.Context
-import com.kotlin.mvvm.boilerplate.App
+import com.kotlin.mvvm.boilerplate.BLApplication
 import dagger.Binds
 import dagger.Module
 
@@ -13,5 +13,5 @@ import dagger.Module
 abstract class AppModule {
 
     @Binds
-    abstract fun bindApplicationContext(app: App): Context
+    abstract fun bindApplicationContext(application: BLApplication): Context
 }

@@ -1,8 +1,8 @@
 package com.kotlin.mvvm.boilerplate.di.module
 
-import com.kotlin.mvvm.boilerplate.data.local.LocalDataSource
-import com.kotlin.mvvm.boilerplate.data.remote.RemoteDataSource
-import com.kotlin.mvvm.boilerplate.data.repository.DataSource
+import com.kotlin.mvvm.boilerplate.data.local.UserLocalDataSource
+import com.kotlin.mvvm.boilerplate.data.remote.UserRemoteDataSource
+import com.kotlin.mvvm.boilerplate.data.repository.UserDataSource
 import com.kotlin.mvvm.boilerplate.di.Local
 import com.kotlin.mvvm.boilerplate.di.Remote
 import dagger.Binds
@@ -19,10 +19,10 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     @Local
-    abstract fun bindLocalDataSource(localDataSource: LocalDataSource): DataSource
+    abstract fun bindUserLocalDataSource(userLocalDataSource: UserLocalDataSource): UserDataSource
 
     @Singleton
     @Binds
     @Remote
-    abstract fun bindRemoteDataSource(remoteDataSource: RemoteDataSource): DataSource
+    abstract fun bindUserRemoteDataSource(userRemoteDataSource: UserRemoteDataSource): UserDataSource
 }

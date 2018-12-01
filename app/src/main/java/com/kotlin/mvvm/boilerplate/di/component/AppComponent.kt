@@ -1,10 +1,7 @@
 package com.kotlin.mvvm.boilerplate.di.component
 
-import com.kotlin.mvvm.boilerplate.App
-import com.kotlin.mvvm.boilerplate.di.module.ActivityBindingModule
-import com.kotlin.mvvm.boilerplate.di.module.AppModule
-import com.kotlin.mvvm.boilerplate.di.module.RepositoryModule
-import com.kotlin.mvvm.boilerplate.di.module.ViewModelModule
+import com.kotlin.mvvm.boilerplate.BLApplication
+import com.kotlin.mvvm.boilerplate.di.module.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -16,14 +13,16 @@ import javax.inject.Singleton
  */
 
 @Singleton
-@Component(modules = [AndroidSupportInjectionModule::class, AppModule::class,
-    RepositoryModule::class, ViewModelModule::class, ActivityBindingModule::class])
-interface AppComponent : AndroidInjector<App> {
+@Component(
+    modules = [AndroidSupportInjectionModule::class, AppModule::class, DatabaseModule::class, NetworkModule::class,
+        RepositoryModule::class, ViewModelModule::class, ActivityBindingModule::class]
+)
+interface AppComponent : AndroidInjector<BLApplication> {
 
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun application(app: App): Builder
+        fun application(application: BLApplication): Builder
 
         fun build(): AppComponent
     }

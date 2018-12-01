@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -16,6 +17,39 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:title="@string/title_home"
+                app:titleTextColor="@android:color/white">
+        </android.support.v7.widget.Toolbar>
+
+        <ImageView
+                android:id="@+id/img_avatar"
+                android:layout_width="@dimen/size_avatar"
+                android:layout_marginLeft="@dimen/padding_normal"
+                android:layout_marginTop="@dimen/padding_large"
+                android:layout_height="@dimen/size_avatar"
+                app:imageUrl="@{viewModel.userAvatar}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:textSize="@dimen/text_xlarge"
+                android:paddingLeft="@dimen/padding_normal"
+                android:paddingRight="@dimen/padding_normal"
+                android:text="@{viewModel.userName}"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/img_avatar"
+                app:layout_constraintBottom_toBottomOf="@id/img_avatar"
+                app:layout_constraintTop_toTopOf="@id/img_avatar"
+                tools:text="@string/app_name"/>
 
     </android.support.constraint.ConstraintLayout>
 

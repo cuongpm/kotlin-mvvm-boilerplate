@@ -26,4 +26,10 @@ class HomeFragment @Inject constructor() : BaseFragment() {
         return dataBinding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        dataBinding.viewModel?.start()
+    }
+
 }

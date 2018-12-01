@@ -1,10 +1,13 @@
 package com.kotlin.mvvm.boilerplate.ui.main.signup
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import com.kotlin.mvvm.boilerplate.R
 import com.kotlin.mvvm.boilerplate.ui.main.base.BaseActivity
+import com.kotlin.mvvm.boilerplate.ui.main.home.MainActivity
 import com.kotlin.mvvm.boilerplate.util.ext.addFragment
 import javax.inject.Inject
 
@@ -23,7 +26,11 @@ class SignupActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_singup)
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(SignupViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(SignupViewModel::class.java).apply {
+            loginEvent.observe(this@SignupActivity, Observer {
+                startActivity(Intent(this@SignupActivity, MainActivity::class.java))
+            })
+        }
 
         addFragment(R.id.content_frame, ::SignupFragment)
     }
