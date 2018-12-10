@@ -1,10 +1,11 @@
 package com.kotlin.mvvm.boilerplate.ui.main.home
 
-import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.databinding.ObservableField
-import com.kotlin.mvvm.boilerplate.data.local.room.UserEntity
-import com.kotlin.mvvm.boilerplate.data.repository.UserRepository
+import com.kotlin.mvvm.boilerplate.data.local.room.NewsEntity
+import com.kotlin.mvvm.boilerplate.data.repository.NewsRepository
+import com.kotlin.mvvm.boilerplate.di.qualifier.ApplicationContext
+import com.kotlin.mvvm.boilerplate.ui.main.base.BaseViewModel
 import javax.inject.Inject
 
 /**
@@ -12,9 +13,9 @@ import javax.inject.Inject
  */
 
 class HomeViewModel @Inject constructor(
-    private val context: Context,
-    private val userRepository: UserRepository
-) : ViewModel() {
+    @ApplicationContext private val context: Context,
+    private val newsRepository: NewsRepository
+) : BaseViewModel() {
 
     companion object {
         private const val name = "Cuong Pham"
@@ -24,15 +25,15 @@ class HomeViewModel @Inject constructor(
     val userName = ObservableField<String>()
     val userAvatar = ObservableField<String>()
 
-    fun start() {
-        getUserInfo()
+    override fun start() {
+        getAllNews()
     }
 
-    fun getUserInfo() {
-        val user = UserEntity(id = "id", name = name, avatar = avatar)
+    private fun getAllNews() {
+        val news = NewsEntity(id = "id", title = name, content = avatar)
 
         // update UI
-        userName.set(user.name)
-        userAvatar.set(user.avatar)
+        userName.set(news.title)
+        userAvatar.set(news.content)
     }
 }

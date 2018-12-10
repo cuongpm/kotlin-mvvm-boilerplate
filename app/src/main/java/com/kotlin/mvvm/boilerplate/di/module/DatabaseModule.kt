@@ -3,7 +3,7 @@ package com.kotlin.mvvm.boilerplate.di.module
 import android.arch.persistence.room.Room
 import com.kotlin.mvvm.boilerplate.BLApplication
 import com.kotlin.mvvm.boilerplate.data.local.room.AppDatabase
-import com.kotlin.mvvm.boilerplate.data.local.room.UserDAO
+import com.kotlin.mvvm.boilerplate.data.local.room.NewsDAO
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -23,5 +23,5 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideTUserDAO(database: AppDatabase): UserDAO = database.userDAO()
+    fun provideNewsDAO(database: AppDatabase): NewsDAO = database.newsDAO()
 }

@@ -1,10 +1,10 @@
 package com.kotlin.mvvm.boilerplate.di.module
 
-import com.kotlin.mvvm.boilerplate.data.local.UserLocalDataSource
-import com.kotlin.mvvm.boilerplate.data.remote.UserRemoteDataSource
-import com.kotlin.mvvm.boilerplate.data.repository.UserDataSource
-import com.kotlin.mvvm.boilerplate.di.Local
-import com.kotlin.mvvm.boilerplate.di.Remote
+import com.kotlin.mvvm.boilerplate.data.local.NewsLocalDataSource
+import com.kotlin.mvvm.boilerplate.data.remote.NewsRemoteDataSource
+import com.kotlin.mvvm.boilerplate.data.repository.NewsDataSource
+import com.kotlin.mvvm.boilerplate.di.qualifier.LocalData
+import com.kotlin.mvvm.boilerplate.di.qualifier.RemoteData
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton
@@ -18,11 +18,11 @@ abstract class RepositoryModule {
 
     @Singleton
     @Binds
-    @Local
-    abstract fun bindUserLocalDataSource(userLocalDataSource: UserLocalDataSource): UserDataSource
+    @LocalData
+    abstract fun bindNewsLocalDataSource(newsLocalDataSource: NewsLocalDataSource): NewsDataSource
 
     @Singleton
     @Binds
-    @Remote
-    abstract fun bindUserRemoteDataSource(userRemoteDataSource: UserRemoteDataSource): UserDataSource
+    @RemoteData
+    abstract fun bindNewsRemoteDataSource(newsRemoteDataSource: NewsRemoteDataSource): NewsDataSource
 }

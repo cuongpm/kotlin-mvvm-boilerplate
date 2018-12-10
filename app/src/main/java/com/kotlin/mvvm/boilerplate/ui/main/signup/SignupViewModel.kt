@@ -2,7 +2,9 @@ package com.kotlin.mvvm.boilerplate.ui.main.signup
 
 import android.arch.lifecycle.ViewModel
 import android.content.Context
-import com.kotlin.mvvm.boilerplate.data.repository.UserRepository
+import com.kotlin.mvvm.boilerplate.data.repository.NewsRepository
+import com.kotlin.mvvm.boilerplate.di.qualifier.ApplicationContext
+import com.kotlin.mvvm.boilerplate.ui.main.base.BaseViewModel
 import com.kotlin.mvvm.boilerplate.util.SingleLiveEvent
 import javax.inject.Inject
 
@@ -11,11 +13,14 @@ import javax.inject.Inject
  */
 
 class SignupViewModel @Inject constructor(
-    private val context: Context,
-    private val userRepository: UserRepository
-) : ViewModel() {
+    @ApplicationContext private val context: Context,
+    private val userRepository: NewsRepository
+) : BaseViewModel() {
 
     val loginEvent = SingleLiveEvent<Void>()
+
+    override fun start() {
+    }
 
     fun login() {
         loginEvent.call()

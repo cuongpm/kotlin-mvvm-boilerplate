@@ -7,8 +7,8 @@ import android.arch.persistence.room.RoomDatabase
  * Created by cuongpm on 12/1/18.
  */
 
-@Database(entities = [UserEntity::class], version = 1)
+@Database(entities = [NewsEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun userDAO(): UserDAO
+    abstract fun newsDAO(): NewsDAO
 }

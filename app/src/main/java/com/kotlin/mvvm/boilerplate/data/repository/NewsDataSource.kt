@@ -4,7 +4,7 @@ package com.kotlin.mvvm.boilerplate.data.repository
  * Created by cuongpm on 11/29/18.
  */
 
-interface UserDataSource {
+interface NewsDataSource {
 
-    fun getUser(userId: String)
+    fun getAllNews()
 }

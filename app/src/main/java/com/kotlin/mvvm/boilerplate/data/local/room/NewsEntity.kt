@@ -8,15 +8,15 @@ import android.arch.persistence.room.PrimaryKey
  * Created by cuongpm on 12/1/18.
  */
 
-@Entity(tableName = "user")
-data class UserEntity constructor(
+@Entity(tableName = "News")
+data class NewsEntity constructor(
     @PrimaryKey
     @ColumnInfo(name = "id")
     var id: String,
 
-    @ColumnInfo(name = "name")
-    var name: String,
+    @ColumnInfo(name = "title")
+    var title: String,
 
-    @ColumnInfo(name = "avatar")
-    var avatar: String
+    @ColumnInfo(name = "content")
+    var content: String
 )

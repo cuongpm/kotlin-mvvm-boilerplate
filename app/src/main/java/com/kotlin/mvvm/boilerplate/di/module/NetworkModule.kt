@@ -2,7 +2,7 @@ package com.kotlin.mvvm.boilerplate.di.module
 
 import android.app.Application
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.kotlin.mvvm.boilerplate.data.remote.UserService
+import com.kotlin.mvvm.boilerplate.data.remote.NewsService
 import com.kotlin.mvvm.boilerplate.util.Memory
 import dagger.Module
 import dagger.Provides
@@ -22,7 +22,7 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    fun buildOkHttpClient(application: Application): OkHttpClient =
+    private fun buildOkHttpClient(application: Application): OkHttpClient =
         OkHttpClient.Builder()
             .addNetworkInterceptor(StethoInterceptor())
             .connectTimeout(10L, TimeUnit.SECONDS)
@@ -51,6 +51,6 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideUserService(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)
+    fun provideNewsService(retrofit: Retrofit): NewsService = retrofit.create(NewsService::class.java)
 
 }

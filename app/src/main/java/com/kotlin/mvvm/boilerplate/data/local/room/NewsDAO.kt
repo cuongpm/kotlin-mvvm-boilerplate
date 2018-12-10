@@ -10,22 +10,22 @@ import android.arch.persistence.room.Query
  */
 
 @Dao
-interface UserDAO {
+interface NewsDAO {
 
     /**
-     * Select all users from User table
+     * Select all news from News table
      *
-     * @return all users
+     * @return all news
      */
-    @Query("SELECT * FROM user")
-    fun getAllUsers(): List<UserEntity>
+    @Query("SELECT * FROM News")
+    fun getAllNews(): List<NewsEntity>
 
     /**
-     * Insert a user in the database. If the user already exists, replace it
+     * Insert a news in the database. If the news already exists, replace it
      *
-     * @param task the task to be inserted
+     * @param news the news to be inserted
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(user: UserEntity)
+    fun insertNews(news: NewsEntity)
 
 }
