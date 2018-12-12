@@ -17,4 +17,7 @@ class NewsRepository @Inject constructor(
 
     override fun getAllNews() {
     }
+
+    override fun getAllComments() {
+    }
 }

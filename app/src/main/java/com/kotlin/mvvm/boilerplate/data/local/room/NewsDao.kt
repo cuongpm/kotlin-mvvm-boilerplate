@@ -10,7 +10,7 @@ import android.arch.persistence.room.Query
  */
 
 @Dao
-interface NewsDAO {
+interface NewsDao {
 
     /**
      * Select all news from News table

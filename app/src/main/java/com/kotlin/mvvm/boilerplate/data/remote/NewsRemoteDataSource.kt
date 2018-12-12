@@ -11,4 +11,7 @@ class NewsRemoteDataSource @Inject constructor() : NewsDataSource {
 
     override fun getAllNews() {
     }
+
+    override fun getAllComments() {
+    }
 }

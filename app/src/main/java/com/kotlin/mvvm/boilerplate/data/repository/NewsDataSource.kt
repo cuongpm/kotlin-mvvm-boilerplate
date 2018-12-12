@@ -7,4 +7,6 @@ package com.kotlin.mvvm.boilerplate.data.repository
 interface NewsDataSource {
 
     fun getAllNews()
+
+    fun getAllComments()
 }

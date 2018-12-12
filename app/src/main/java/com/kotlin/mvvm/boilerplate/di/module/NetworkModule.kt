@@ -22,6 +22,10 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
+    companion object {
+        private const val HACKER_NEWS_URL = "https://hacker-news.firebaseio.com/v0/"
+    }
+
     private fun buildOkHttpClient(application: Application): OkHttpClient =
         OkHttpClient.Builder()
             .addNetworkInterceptor(StethoInterceptor())
@@ -43,7 +47,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl("https://bl.net/")
+        .baseUrl(HACKER_NEWS_URL)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
