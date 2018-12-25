@@ -12,7 +12,7 @@ import android.arch.persistence.room.PrimaryKey
 data class CommentEntity constructor(
     @PrimaryKey
     @ColumnInfo(name = "id")
-    var id: String,
+    var id: Int,
 
     @ColumnInfo(name = "author")
     var author: String,

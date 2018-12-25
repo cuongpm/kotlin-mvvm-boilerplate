@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">kotlin-mvvm-boilerplate</string>
     <string name="btn_login">Login</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Hacker News</string>
 </resources>

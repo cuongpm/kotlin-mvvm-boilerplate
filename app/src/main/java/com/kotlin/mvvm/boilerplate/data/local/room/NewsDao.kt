@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
+import io.reactivex.Flowable
 
 /**
  * Created by cuongpm on 12/1/18.
@@ -12,20 +13,12 @@ import android.arch.persistence.room.Query
 @Dao
 interface NewsDao {
 
-    /**
-     * Select all news from News table
-     *
-     * @return all news
-     */
     @Query("SELECT * FROM News")
-    fun getAllNews(): List<NewsEntity>
+    fun getAllNews(): Flowable<List<NewsEntity>>
 
-    /**
-     * Insert a news in the database. If the news already exists, replace it
-     *
-     * @param news the news to be inserted
-     */
+    @Query("SELECT * FROM News WHERE id = :newsId")
+    fun getNewsById(newsId: Int): Flowable<NewsEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNews(news: NewsEntity)
-
 }

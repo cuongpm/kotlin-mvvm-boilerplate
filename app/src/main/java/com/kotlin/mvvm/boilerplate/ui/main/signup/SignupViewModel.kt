@@ -1,6 +1,5 @@
 package com.kotlin.mvvm.boilerplate.ui.main.signup
 
-import android.arch.lifecycle.ViewModel
 import android.content.Context
 import com.kotlin.mvvm.boilerplate.data.repository.NewsRepository
 import com.kotlin.mvvm.boilerplate.di.qualifier.ApplicationContext
@@ -13,13 +12,16 @@ import javax.inject.Inject
  */
 
 class SignupViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val userRepository: NewsRepository
+//    @ApplicationContext private val context: Context,
+//    private val userRepository: NewsRepository
 ) : BaseViewModel() {
 
     val loginEvent = SingleLiveEvent<Void>()
 
     override fun start() {
+    }
+
+    override fun stop() {
     }
 
     fun login() {

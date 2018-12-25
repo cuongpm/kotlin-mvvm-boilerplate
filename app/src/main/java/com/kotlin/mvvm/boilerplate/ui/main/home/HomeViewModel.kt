@@ -1,11 +1,13 @@
 package com.kotlin.mvvm.boilerplate.ui.main.home
 
-import android.content.Context
-import android.databinding.ObservableField
+import android.databinding.ObservableArrayList
+import android.databinding.ObservableList
 import com.kotlin.mvvm.boilerplate.data.local.room.NewsEntity
 import com.kotlin.mvvm.boilerplate.data.repository.NewsRepository
-import com.kotlin.mvvm.boilerplate.di.qualifier.ApplicationContext
 import com.kotlin.mvvm.boilerplate.ui.main.base.BaseViewModel
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
@@ -13,27 +15,32 @@ import javax.inject.Inject
  */
 
 class HomeViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
     private val newsRepository: NewsRepository
 ) : BaseViewModel() {
 
-    companion object {
-        private const val name = "Cuong Pham"
-        private const val avatar = "https://avatars3.githubusercontent.com/u/2792438"
-    }
+    val items: ObservableList<NewsEntity> = ObservableArrayList()
 
-    val userName = ObservableField<String>()
-    val userAvatar = ObservableField<String>()
+    private var disposable: Disposable? = null
 
     override fun start() {
         getAllNews()
     }
 
-    private fun getAllNews() {
-        val news = NewsEntity(id = "id", title = name, content = avatar)
+    override fun stop() {
+        disposable?.let { if (!it.isDisposed) it.dispose() }
+    }
 
-        // update UI
-        userName.set(news.title)
-        userAvatar.set(news.content)
+    private fun getAllNews() {
+        disposable = newsRepository.getAllNews()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ news ->
+                with(items) {
+                    clear()
+                    addAll(news)
+                }
+            }, { error ->
+                error.printStackTrace()
+            })
     }
 }
