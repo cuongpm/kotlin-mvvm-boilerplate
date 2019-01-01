@@ -7,13 +7,9 @@
         <import type="android.view.View"/>
 
         <variable
-                name="news"
-                type="com.kotlin.mvvm.boilerplate.data.local.room.NewsEntity"/>
+                name="comment"
+                type="com.kotlin.mvvm.boilerplate.data.local.room.CommentEntity"/>
 
-        <variable
-                name="listener"
-                type="com.kotlin.mvvm.boilerplate.ui.component.adapter.NewsListener"
-                />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -21,13 +17,12 @@
             android:layout_height="?android:attr/listPreferredItemHeight"
             android:background="?attr/selectableItemBackground"
             android:paddingLeft="@dimen/padding_normal"
-            android:paddingRight="@dimen/padding_normal"
-            android:onClick="@{() -> listener.onNewsSelected(news)}">
+            android:paddingRight="@dimen/padding_normal">
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{news.title}"
+                android:text="@{comment.text}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
     </android.support.constraint.ConstraintLayout>

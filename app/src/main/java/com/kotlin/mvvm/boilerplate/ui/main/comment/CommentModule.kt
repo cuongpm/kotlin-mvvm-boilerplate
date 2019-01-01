@@ -1,17 +1,17 @@
-package com.kotlin.mvvm.boilerplate.ui.main.signup
+package com.kotlin.mvvm.boilerplate.ui.main.comment
 
 import com.kotlin.mvvm.boilerplate.di.FragmentScoped
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 /**
- * Created by cuongpm on 11/29/18.
+ * Created by cuongpm on 12/31/18.
  */
 
 @Module
-abstract class SignupModule {
+abstract class CommentModule {
 
     @FragmentScoped
     @ContributesAndroidInjector
-    abstract fun bindSignupFragment(): SignupFragment
+    abstract fun bindCommentFragment(): CommentFragment
 }

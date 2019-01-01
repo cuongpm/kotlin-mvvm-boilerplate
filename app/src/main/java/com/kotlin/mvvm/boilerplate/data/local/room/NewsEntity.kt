@@ -15,14 +15,26 @@ import java.util.*
 @Entity(tableName = "News")
 data class NewsEntity constructor(
     @PrimaryKey
-    @ColumnInfo(name = "id")
-    var id: String = UUID.randomUUID().toString(),
+    @ColumnInfo(name = "idDefault")
+    var idDefault: String = UUID.randomUUID().toString(),
+    @SerializedName("id")
+    @Expose
+    var id: Int = 0,
+    @SerializedName("by")
+    @Expose
+    var by: String = "",
     @SerializedName("title")
     @Expose
     var title: String = "",
     @SerializedName("url")
     @Expose
     var url: String = "",
+    @SerializedName("score")
+    @Expose
+    var score: Int = 0,
+    @SerializedName("time")
+    @Expose
+    var time: Long = 0,
     @SerializedName("kids")
     @Expose
     @Ignore

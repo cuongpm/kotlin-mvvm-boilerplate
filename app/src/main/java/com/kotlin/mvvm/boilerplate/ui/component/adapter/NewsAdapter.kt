@@ -29,15 +29,20 @@ class NewsAdapter(
 
     override fun getItemCount() = news.size
 
-    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) = holder.bind(news[position])
+    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) =
+        holder.bind(news[position], object : NewsListener {
+            override fun onNewsSelected(news: NewsEntity) {
+                homeViewModel?.openNews(news)
+            }
+        })
 
     class NewsViewHolder(private val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(newsEntity: NewsEntity) {
+        fun bind(newsEntity: NewsEntity, newsListener: NewsListener) {
             with(binding)
             {
                 news = newsEntity
-//                listener = selectNetworkListener
+                listener = newsListener
                 executePendingBindings()
             }
         }
@@ -47,4 +52,8 @@ class NewsAdapter(
         this.news = news
         notifyDataSetChanged()
     }
+}
+
+interface NewsListener {
+    fun onNewsSelected(news: NewsEntity)
 }

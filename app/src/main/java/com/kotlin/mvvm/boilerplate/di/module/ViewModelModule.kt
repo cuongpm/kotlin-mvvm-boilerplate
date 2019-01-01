@@ -3,8 +3,8 @@ package com.kotlin.mvvm.boilerplate.di.module
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.kotlin.mvvm.boilerplate.di.ViewModelKey
+import com.kotlin.mvvm.boilerplate.ui.main.comment.CommentViewModel
 import com.kotlin.mvvm.boilerplate.ui.main.home.HomeViewModel
-import com.kotlin.mvvm.boilerplate.ui.main.signup.SignupViewModel
 import com.kotlin.mvvm.boilerplate.util.ViewModelFactory
 import dagger.Binds
 import dagger.Module
@@ -24,11 +24,11 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(SignupViewModel::class)
-    abstract fun bindSignupViewModel(viewModel: SignupViewModel): ViewModel
+    @ViewModelKey(HomeViewModel::class)
+    abstract fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
 
     @Binds
     @IntoMap
-    @ViewModelKey(HomeViewModel::class)
-    abstract fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
+    @ViewModelKey(CommentViewModel::class)
+    abstract fun bindCommentViewModel(viewModel: CommentViewModel): ViewModel
 }

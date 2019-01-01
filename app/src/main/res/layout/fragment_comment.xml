@@ -9,11 +9,11 @@
 
         <variable
                 name="viewModel"
-                type="com.kotlin.mvvm.boilerplate.ui.main.home.HomeViewModel"/>
+                type="com.kotlin.mvvm.boilerplate.ui.main.comment.CommentViewModel"/>
 
         <variable
                 name="adapter"
-                type="com.kotlin.mvvm.boilerplate.ui.component.adapter.NewsAdapter"/>
+                type="com.kotlin.mvvm.boilerplate.ui.component.adapter.CommentAdapter"/>
 
     </data>
 
@@ -27,7 +27,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                app:title="@string/title_home"
+                app:navigationIcon="@drawable/ic_back"
+                app:title="@{viewModel.title}"
+                app:navigationOnClickListener="@{() -> viewModel.pressNavigationIcon()}"
                 app:titleTextColor="@android:color/white">
         </android.support.v7.widget.Toolbar>
 
@@ -36,12 +38,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:isRefreshing="@{viewModel.isRefreshing}"
-                app:onRefreshListener="@{() -> viewModel.refreshNews()}"
+                app:onRefreshListener="@{() -> viewModel.refreshComments()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_news"
+                    android:id="@+id/rv_comments"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:items="@{viewModel.items}"

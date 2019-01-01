@@ -9,7 +9,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_singup)
+        setContentView(R.layout.activity_main)
 
         addFragment(R.id.content_frame, ::HomeFragment)
     }

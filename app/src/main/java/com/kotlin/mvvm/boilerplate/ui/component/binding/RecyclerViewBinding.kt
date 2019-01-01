@@ -2,7 +2,9 @@ package com.kotlin.mvvm.boilerplate.ui.component.binding
 
 import android.databinding.BindingAdapter
 import android.support.v7.widget.RecyclerView
+import com.kotlin.mvvm.boilerplate.data.local.room.CommentEntity
 import com.kotlin.mvvm.boilerplate.data.local.room.NewsEntity
+import com.kotlin.mvvm.boilerplate.ui.component.adapter.CommentAdapter
 import com.kotlin.mvvm.boilerplate.ui.component.adapter.NewsAdapter
 
 /**
@@ -13,8 +15,16 @@ object RecyclerViewBinding {
 
     @BindingAdapter("app:items")
     @JvmStatic
-    fun setItems(recyclerView: RecyclerView, items: List<NewsEntity>) {
+    fun setListNews(recyclerView: RecyclerView, items: List<NewsEntity>) {
         with(recyclerView.adapter as NewsAdapter?) {
+            this?.setData(items)
+        }
+    }
+
+    @BindingAdapter("app:items")
+    @JvmStatic
+    fun setListComments(recyclerView: RecyclerView, items: List<CommentEntity>) {
+        with(recyclerView.adapter as CommentAdapter?) {
             this?.setData(items)
         }
     }

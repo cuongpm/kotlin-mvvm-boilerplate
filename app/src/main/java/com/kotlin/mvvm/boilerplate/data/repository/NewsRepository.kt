@@ -50,7 +50,7 @@ class NewsRepository @Inject constructor(
     }
 
     override fun getAllComments(newsId: Int): Flowable<List<CommentEntity>> {
-        return Flowable.empty()
+        return remoteDataSource.getAllComments(newsId)
     }
 
     override fun saveAllNews(news: List<NewsEntity>) {
