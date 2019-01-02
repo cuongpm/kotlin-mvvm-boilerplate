@@ -1,6 +1,5 @@
 package com.kotlin.mvvm.boilerplate.ui.main.comment
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -42,6 +41,7 @@ class CommentFragment @Inject constructor() : BaseFragment() {
         dataBinding = FragmentCommentBinding.inflate(inflater, container, false).apply {
             this.viewModel = commentViewModel
             this.adapter = commentAdapter
+            this.navigationListener = navigationIconClickListener
         }
 
         return dataBinding.root
@@ -55,7 +55,6 @@ class CommentFragment @Inject constructor() : BaseFragment() {
 
         commentViewModel.start()
         commentViewModel.showNewsInfo()
-        handleUIEvent()
     }
 
     override fun onDestroyView() {
@@ -63,7 +62,5 @@ class CommentFragment @Inject constructor() : BaseFragment() {
         commentViewModel.stop()
     }
 
-    private fun handleUIEvent() {
-        commentViewModel.onBackPressedEvent.observe(this, Observer { activity?.finish() })
-    }
+    private val navigationIconClickListener = View.OnClickListener { activity?.finish() }
 }

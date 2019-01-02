@@ -34,6 +34,12 @@ dependencies {
     implementation deps.support.recyclerview
     implementation deps.support.constraintlayout
 
+    // Testing
+    testImplementation deps.testing.junit
+    testImplementation deps.testing.mock_core
+    androidTestImplementation deps.testing.test_runner
+    androidTestImplementation deps.testing.espresso_core
+
     // Multidex
     implementation deps.android.multidex
 
@@ -75,10 +81,4 @@ dependencies {
     // Glide
     implementation deps.glide.runtime
     annotationProcessor deps.glide.compiler
-
-    // Testing
-    testImplementation deps.testing.junit
-    testImplementation deps.testing.mock_core
-    androidTestImplementation deps.testing.test_runner
-    androidTestImplementation deps.testing.espresso_core
 }

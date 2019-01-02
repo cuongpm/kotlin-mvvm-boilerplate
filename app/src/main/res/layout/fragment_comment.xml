@@ -15,6 +15,10 @@
                 name="adapter"
                 type="com.kotlin.mvvm.boilerplate.ui.component.adapter.CommentAdapter"/>
 
+        <variable
+                name="navigationListener"
+                type="android.view.View.OnClickListener"/>
+
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -29,7 +33,7 @@
                 android:background="@color/colorPrimary"
                 app:navigationIcon="@drawable/ic_back"
                 app:title="@{viewModel.title}"
-                app:navigationOnClickListener="@{() -> viewModel.pressNavigationIcon()}"
+                app:navigationOnClickListener="@{navigationListener}"
                 app:titleTextColor="@android:color/white">
         </android.support.v7.widget.Toolbar>
 
@@ -46,8 +50,9 @@
                     android:id="@+id/rv_comments"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:items="@{viewModel.items}"
                     android:adapter="@{adapter}"
+                    app:items="@{viewModel.items}"
+                    app:addVerticalItemDecoration="@{true}"
                     app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
         </android.support.v4.widget.SwipeRefreshLayout>

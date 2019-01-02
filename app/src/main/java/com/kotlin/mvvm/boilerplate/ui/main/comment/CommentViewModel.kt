@@ -8,7 +8,6 @@ import com.kotlin.mvvm.boilerplate.data.local.room.CommentEntity
 import com.kotlin.mvvm.boilerplate.data.local.room.NewsEntity
 import com.kotlin.mvvm.boilerplate.data.repository.NewsRepository
 import com.kotlin.mvvm.boilerplate.ui.main.base.BaseViewModel
-import com.kotlin.mvvm.boilerplate.util.SingleLiveEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -27,7 +26,6 @@ class CommentViewModel @Inject constructor(
     val isRefreshing = ObservableBoolean(false)
     val title = ObservableField("")
     val items: ObservableList<CommentEntity> = ObservableArrayList()
-    val onBackPressedEvent = SingleLiveEvent<Void>()
 
     private var disposable: Disposable? = null
 
@@ -43,18 +41,13 @@ class CommentViewModel @Inject constructor(
         getAllComments()
     }
 
-
-    fun pressNavigationIcon() {
-        onBackPressedEvent.call()
-    }
-
     fun showNewsInfo() {
         newsEntity?.let {
             title.set(it.title)
         }
     }
 
-    fun getAllComments() {
+    private fun getAllComments() {
         newsEntity?.let {
             disposable = newsRepository.getAllComments(it.id)
                 .subscribeOn(Schedulers.io())

@@ -18,17 +18,42 @@
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="?android:attr/listPreferredItemHeight"
+            android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
-            android:paddingLeft="@dimen/padding_normal"
-            android:paddingRight="@dimen/padding_normal"
+            android:padding="@dimen/padding_normal"
             android:onClick="@{() -> listener.onNewsSelected(news)}">
 
         <TextView
+                android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black_85"
+                android:textSize="@dimen/text_medium"
+                android:maxLines="2"
                 android:text="@{news.title}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_author"
                 app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+                android:id="@+id/tv_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_55"
+                android:layout_marginTop="@dimen/padding_small"
+                android:textSize="@dimen/text_small"
+                android:text="@{news.authorAndPoints}"
+                app:layout_constraintBottom_toTopOf="@id/tv_time"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"/>
+
+        <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_55"
+                android:layout_marginTop="@dimen/padding_small"
+                android:textSize="@dimen/text_small"
+                android:text="@{news.timeAndComment}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_author"/>
     </android.support.constraint.ConstraintLayout>
 </layout>

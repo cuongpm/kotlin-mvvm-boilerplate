@@ -18,6 +18,6 @@ object SwipeRefreshLayoutBinding {
     @BindingAdapter("app:onRefreshListener")
     @JvmStatic
     fun SwipeRefreshLayout.setOnRefreshListener(func: () -> Unit) {
-        setOnRefreshListener { func.invoke() }
+        setOnRefreshListener { func() }
     }
 }

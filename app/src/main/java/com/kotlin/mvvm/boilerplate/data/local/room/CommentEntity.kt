@@ -5,6 +5,7 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import com.kotlin.mvvm.boilerplate.util.getRelativeTime
 
 /**
  * Created by cuongpm on 12/12/18.
@@ -37,4 +38,9 @@ data class CommentEntity constructor(
     @SerializedName("time")
     @Expose
     var time: Long
-)
+) {
+
+    var authorAndTime = ""
+        get() = "${getRelativeTime(time)} by $by"
+
+}
