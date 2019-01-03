@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Singleton
 class NewsRemoteDataSource @Inject constructor(
     private val newsService: NewsService
-) : NewsDataSource() {
+) : NewsDataSource {
 
     override fun getAllNews(): Flowable<List<NewsEntity>> {
         return newsService.getTopNewsIds()
@@ -36,5 +36,17 @@ class NewsRemoteDataSource @Inject constructor(
                         newsService.getComment(commentId)
                     }.toList().toFlowable()
             }
+    }
+
+    override fun saveAllNews(news: List<NewsEntity>) {
+    }
+
+    override fun saveAllComments(comments: List<CommentEntity>) {
+    }
+
+    override fun refreshNews() {
+    }
+
+    override fun refreshComments() {
     }
 }

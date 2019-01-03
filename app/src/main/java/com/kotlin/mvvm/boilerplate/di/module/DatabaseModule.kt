@@ -24,9 +24,9 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideNewsDAO(database: AppDatabase): NewsDao = database.newsDao()
+    fun provideNewsDao(database: AppDatabase): NewsDao = database.newsDao()
 
     @Singleton
     @Provides
-    fun provideCommentDAO(database: AppDatabase): CommentDao = database.commentDao()
+    fun provideCommentDao(database: AppDatabase): CommentDao = database.commentDao()
 }

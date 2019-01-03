@@ -17,27 +17,27 @@ data class CommentEntity constructor(
     @ColumnInfo(name = "id")
     @SerializedName("id")
     @Expose
-    var id: Int,
+    var id: Int = 0,
 
     @ColumnInfo(name = "by")
     @SerializedName("by")
     @Expose
-    var by: String,
+    var by: String = "",
 
     @ColumnInfo(name = "text")
     @SerializedName("text")
     @Expose
-    var text: String,
+    var text: String = "",
 
     @ColumnInfo(name = "parent")
     @SerializedName("parent")
     @Expose
-    var parent: Int,
+    var parent: Int = 0,
 
     @ColumnInfo(name = "time")
     @SerializedName("time")
     @Expose
-    var time: Long
+    var time: Long = 0
 ) {
 
     var authorAndTime = ""

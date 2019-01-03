@@ -8,13 +8,17 @@ import io.reactivex.Flowable
  * Created by cuongpm on 11/29/18.
  */
 
-abstract class NewsDataSource {
+interface NewsDataSource {
 
-    abstract fun getAllNews(): Flowable<List<NewsEntity>>
+    fun getAllNews(): Flowable<List<NewsEntity>>
 
-    abstract fun getAllComments(newsId: Int): Flowable<List<CommentEntity>>
+    fun getAllComments(newsId: Int): Flowable<List<CommentEntity>>
 
-    open fun saveAllNews(news: List<NewsEntity>) {}
+    fun saveAllNews(news: List<NewsEntity>)
 
-    open fun saveAllComments(comments: List<CommentEntity>) {}
+    fun saveAllComments(comments: List<CommentEntity>)
+
+    fun refreshNews()
+
+    fun refreshComments()
 }

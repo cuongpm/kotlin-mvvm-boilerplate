@@ -27,7 +27,7 @@ class HomeViewModel @Inject constructor(
     private var disposable: Disposable? = null
 
     override fun start() {
-        getAllNews()
+        getAllNews(false)
     }
 
     override fun stop() {
@@ -35,14 +35,16 @@ class HomeViewModel @Inject constructor(
     }
 
     fun refreshNews() {
-        getAllNews()
+        getAllNews(true)
     }
 
     fun openNews(news: NewsEntity) {
         onNewsOpenEvent.value = news
     }
 
-    fun getAllNews() {
+    private fun getAllNews(isRefresh: Boolean) {
+        if (isRefresh) newsRepository.refreshNews()
+
         disposable = newsRepository.getAllNews()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

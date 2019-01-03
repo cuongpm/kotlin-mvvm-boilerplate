@@ -30,7 +30,7 @@ class CommentViewModel @Inject constructor(
     private var disposable: Disposable? = null
 
     override fun start() {
-        getAllComments()
+        getAllComments(false)
     }
 
     override fun stop() {
@@ -38,7 +38,7 @@ class CommentViewModel @Inject constructor(
     }
 
     fun refreshComments() {
-        getAllComments()
+        getAllComments(true)
     }
 
     fun showNewsInfo() {
@@ -47,7 +47,9 @@ class CommentViewModel @Inject constructor(
         }
     }
 
-    private fun getAllComments() {
+    private fun getAllComments(isRefresh: Boolean) {
+        if (isRefresh) newsRepository.refreshComments()
+
         newsEntity?.let {
             disposable = newsRepository.getAllComments(it.id)
                 .subscribeOn(Schedulers.io())

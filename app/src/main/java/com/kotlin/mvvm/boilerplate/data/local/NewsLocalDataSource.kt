@@ -17,19 +17,27 @@ import javax.inject.Singleton
 class NewsLocalDataSource @Inject constructor(
     private val newsDao: NewsDao,
     private val commentDao: CommentDao
-) : NewsDataSource() {
+) : NewsDataSource {
 
     override fun getAllNews(): Flowable<List<NewsEntity>> {
-        return newsDao.getAllNews()
+        return newsDao.getAllNews().toFlowable()
     }
 
     override fun getAllComments(newsId: Int): Flowable<List<CommentEntity>> {
-        return commentDao.getAllCommentByNewsId()
+        return commentDao.getAllCommentByNewsId(newsId).toFlowable()
     }
 
     override fun saveAllNews(news: List<NewsEntity>) {
+        news.map { newsDao.insertNews(it) }
     }
 
     override fun saveAllComments(comments: List<CommentEntity>) {
+        comments.map { commentDao.insertComment(it) }
+    }
+
+    override fun refreshNews() {
+    }
+
+    override fun refreshComments() {
     }
 }

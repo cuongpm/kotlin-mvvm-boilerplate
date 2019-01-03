@@ -2,10 +2,11 @@ package com.kotlin.mvvm.boilerplate.data.local.room
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
-import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.TypeConverters
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import com.kotlin.mvvm.boilerplate.util.RoomConverter
 import com.kotlin.mvvm.boilerplate.util.getRelativeTime
 
 /**
@@ -13,6 +14,7 @@ import com.kotlin.mvvm.boilerplate.util.getRelativeTime
  */
 
 @Entity(tableName = "News")
+@TypeConverters(RoomConverter::class)
 data class NewsEntity constructor(
     @PrimaryKey
     @ColumnInfo(name = "id")
@@ -45,9 +47,10 @@ data class NewsEntity constructor(
     @Expose
     var time: Long = 0,
 
+
+    @TypeConverters(RoomConverter::class)
     @SerializedName("kids")
     @Expose
-    @Ignore
     var commentIds: List<Int> = emptyList()
 ) {
 

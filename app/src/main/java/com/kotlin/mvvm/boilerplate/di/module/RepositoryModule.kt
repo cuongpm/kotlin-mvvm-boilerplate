@@ -3,7 +3,6 @@ package com.kotlin.mvvm.boilerplate.di.module
 import com.kotlin.mvvm.boilerplate.data.local.NewsLocalDataSource
 import com.kotlin.mvvm.boilerplate.data.remote.NewsRemoteDataSource
 import com.kotlin.mvvm.boilerplate.data.repository.NewsDataSource
-import com.kotlin.mvvm.boilerplate.data.repository.NewsRepository
 import com.kotlin.mvvm.boilerplate.di.qualifier.LocalData
 import com.kotlin.mvvm.boilerplate.di.qualifier.RemoteData
 import dagger.Binds

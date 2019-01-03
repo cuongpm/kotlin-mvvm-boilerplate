@@ -5,6 +5,7 @@ import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
 import io.reactivex.Flowable
+import io.reactivex.Maybe
 
 /**
  * Created by cuongpm on 12/1/18.
@@ -13,8 +14,8 @@ import io.reactivex.Flowable
 @Dao
 interface NewsDao {
 
-    @Query("SELECT * FROM News")
-    fun getAllNews(): Flowable<List<NewsEntity>>
+    @Query("SELECT * FROM News ORDER BY time ASC")
+    fun getAllNews(): Maybe<List<NewsEntity>>
 
     @Query("SELECT * FROM News WHERE id = :newsId")
     fun getNewsById(newsId: Int): Flowable<NewsEntity>
